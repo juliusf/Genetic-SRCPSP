@@ -1,0 +1,59 @@
+#!/bin/bash
+
+#if [ $# -lt 1 ]; then
+#    echo "Usage remote_run.sh <hostName>"
+#    exit 1
+#fi
+
+
+failAndExit()
+{
+    # Print messages if any were supplied using printf
+    if [ $# -ne 0 ]; then
+        printf $@
+    fi
+    exit 1
+}
+
+remoteRun(){
+    OUTRESULTS=/tmp/`date +"%y-%m-%d--%H"`_`expr $ITER \* $CORES / 1000`k_$SCHEDULER-results.pickle
+    OUTEXTREMES=/tmp/`date +"%y-%m-%d--%H"`_`expr $ITER \* $CORES / 1000`k_$SCHEDULER-extremes.pickle
+    #first connect without annoying the user
+    ssh $HOST 'echo connected';                            [ $? -ne 0 ] && failAndExit
+
+    #copy the update script to the remote machine
+    scp remote_update.sh "$HOST:/tmp/remote_update.sh";    [ $? -ne 0 ] && failAndExit
+
+    ssh $HOST 'chmod +x /tmp/remote_update.sh';            [ $? -ne 0 ] && failAndExit
+
+    #run remote update script
+    ssh $HOST 'sh /tmp/remote_update.sh';                   [ $? -ne 0 ] && failAndExit
+
+    scp /tmp/output.pickle $HOST:/tmp/output.pickle;       [ $? -ne 0 ] && failAndExit
+
+    ssh -n $HOST "time pypy ~/deepThought/tooling/deepThought/multiprocessing/multicoreSimulation.py /tmp/output.pickle --cores $CORES --iter $ITER --out_extremes $OUTEXTREMES --out_results $OUTRESULTS --scheduler $SCHEDULER";        [ $? -ne 0 ] && failAndExit
+
+    scp $HOST:$OUTRESULTS $OUTRESULTS;       [ $? -ne 0 ] && failAndExit
+
+    scp $HOST:$OUTEXTREMES $OUTEXTREMES;       [ $? -ne 0 ] && failAndExit
+}
+
+HOST=cptcrunch
+SCHEDULER=ReferenceScheduler
+CORES=4
+ITER=500
+remoteRun
+
+HOST=cptcrunch
+SCHEDULER=OptimizedDependencyScheduler
+CORES=4
+ITER=500
+remoteRun
+
+
+
+
+
+osascript -e 'display notification "remote processing job finished successfully" with title "cptcrunch"'
+
+
