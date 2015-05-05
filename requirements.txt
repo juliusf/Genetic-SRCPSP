@@ -1,0 +1,16 @@
+argparse
+pytest
+pytest-cov
+lxml
+scipy
+numpy
+simpy
+matplotlib
+pymc
+seaborn
+minibar
+lmfit
+enum34
+deap
+scoop
+progressbar
