@@ -6,5 +6,5 @@ Scheduling of tasks is one of the most basic, yet most complicated tasks in any 
 
 ##About this Repo
 
-This reposity contains the software created during my Masters thesis. This contains the implementation of the genetic algorithm itself, as well as various tools created during the process. However, the parser which can be used to convert XML files to our data model has been removed, since it would expose corporate secrets.
+This reposity contains the software created during my Masters thesis. This includes the implementation of the genetic algorithm itself, as well as various tools created during the process. However, the parser which can be used to convert XML files to our data model has been removed, since it would expose corporate secrets.
 Please do not hesitate to contact me if you have any questions
