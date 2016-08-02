@@ -25,9 +25,9 @@ To get a basic simulation setup running the following steps are required:
 		cd bin
 		./simulator --scheduler PPPolicies --output /tmp/outputfile.pickle ../sampleData/anonymized.pickle
 Where 
-	* `--scheduler` specifies the scheduling policy to be used. All schedulers implemented can be found in `schedulers/`.
-	* `--output` specifies the file the simulation results should be written to
-	* The last parameter specifies the for the scheduling problem which should be solved
+* `--scheduler` specifies the scheduling policy to be used. All schedulers implemented can be found in `schedulers/`.
+* `--output` specifies the file the simulation results should be written to
+* The last parameter specifies the for the scheduling problem which should be solved
 
 One manifestation of the best scheduling priority by the simulator can be displayed as Gantt Chart with the `visualizer` tool:
 
