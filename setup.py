@@ -9,5 +9,5 @@ packages=find_packages(),
 url='https://github.com/juliusf/deepThought',
 description='The Answer to The Ultimate Question of Life, the Universe and Everything.',
 long_description=open('README.md').read(),
-scripts=['bin/extractor', 'bin/simulator', 'bin/visualizer', 'bin/multisim', 'bin/optimizer']
+scripts=['bin/simulator', 'bin/visualizer', 'bin/multisim', 'bin/optimizer']
 )

@@ -1,0 +1,6 @@
+#!/usr/bin/env python
+from deepThought.visualizer import visualizer
+
+__author__ = 'jules'
+
+visualizer.main()
