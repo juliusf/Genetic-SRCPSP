@@ -6,8 +6,8 @@ Scheduling of tasks is one of the most basic, yet most complicated tasks in any 
 
 ## About this Repo
 
-This reposity contains the software created during my Masters thesis. This includes the implementation of the genetic algorithm itself, as well as various tools created during the process. However, the parser which can be used to convert XML files to our data model has been removed, since it would expose corporate secrets.
-I included an anonymized version of the dataset we used to validate my our Algorithm. The dataset is located in `sampleData/anonymized.pickle`. described in the thesis thoroghly. In this particular version UUIDs and names of tasks, ressources etc. have been replaced by randomly generated strings. This does not affect the functionality of the algorithm, though.
+This repository contains the software created during my Masters thesis. This includes the implementation of the genetic algorithm itself, as well as various tools created during the process. However, the parser which can be used to convert XML files to our data model has been removed since it would expose corporate secrets.
+I included an anonymized version of the dataset we used to validate my our Algorithm. The dataset is located in `sampleData/anonymized.pickle`. It is described in the thesis thoroghly. In this particular version UUIDs and names of tasks, resources etc. have been replaced by randomly generated strings. This does not affect the functionality of the algorithm though.
 A lot of this software has been developed in a hurry and the documentation is not always correct / consistent. This also affectsoveral code quality.
 
 Please do not hesitate to contact me if you have any questions.
